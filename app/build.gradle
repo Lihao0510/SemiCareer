@@ -1,0 +1,46 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.lihao.semicareer"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86"
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: "com.lihao.semicareer",
+                JPUSH_APPKEY : "4ad691783ffc72cb1e37c420", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-lihao", //暂时填写默认值即可.
+        ]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':career-core')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // 此处以JPush 3.0.8 版本为例。
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'cn.jiguang.sdk:jpush:3.0.8'
+    compile 'cn.jiguang.sdk:jcore:1.1.6'
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+}

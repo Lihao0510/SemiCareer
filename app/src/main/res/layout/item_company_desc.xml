@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="30dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/iv_company_logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon_company_lagou"
+        app:layout_constraintBottom_toTopOf="@+id/gline_hori"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_width="0dip"
+        app:riv_corner_radius="8dip" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gline_hori"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="25dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/gline_verti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="72dp" />
+
+    <TextView
+        android:id="@+id/tv_company_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="吊丝科技"
+        android:textColor="@color/darkBlack"
+        android:textSize="@dimen/font_h3"
+        android:textStyle="normal"
+        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_company_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="哈尔滨市香坊区红旗大街"
+        android:textColor="@color/lightGray"
+        android:textSize="@dimen/font_small"
+        android:textStyle="normal"
+        android:typeface="monospace"
+        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+        app:layout_constraintTop_toBottomOf="@+id/tv_company_name" />
+
+    <TextView
+        android:id="@+id/tv_company_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="互联网/工具软件 | 20-50人 | 私人企业"
+        android:textColor="@color/littleGray"
+        android:textSize="@dimen/font_tiny"
+        android:textStyle="normal"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/gline_hori"
+        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+        app:layout_constraintTop_toBottomOf="@+id/tv_company_address" />
+
+    <TextView
+        android:id="@+id/tv_company_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:text="提供了27个职位,前往应聘"
+        android:textColor="@color/littleGray"
+        android:textSize="@dimen/font_small"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+        app:layout_constraintTop_toTopOf="@+id/gline_hori" />
+
+    <com.joanzapata.iconify.widget.IconTextView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:text="{fa-angel-right}"
+        android:textColor="@color/littleGray"
+        android:textSize="@dimen/font_h2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gline_hori" />
+
+</android.support.constraint.ConstraintLayout>
