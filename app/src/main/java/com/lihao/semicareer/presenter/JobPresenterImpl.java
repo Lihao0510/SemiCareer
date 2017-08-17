@@ -7,7 +7,6 @@ import android.view.View;
 import com.lihao.semicareer.adapter.JobAdapter;
 import com.lihao.semicareer.contract.JobContract;
 import com.lihao.semicareer.entity.CareerJob;
-import com.lihao.semicareer.entity.JobItem;
 import com.lihao.semicareer.model.JobModel;
 import com.oridway.oridcore.network.ResponseObject;
 import com.oridway.oridcore.utils.LogUtil;
@@ -121,6 +120,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
                     @Override
                     public void onError(Throwable e) {
                         LogUtil.debugLog("获取Job失败:" + e.toString());
+                        mView.onFinishRefresh();
                     }
 
                     @Override

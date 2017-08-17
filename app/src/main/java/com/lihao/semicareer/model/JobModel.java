@@ -6,6 +6,7 @@ import com.oridway.oridcore.network.ResponseObject;
 import com.oridway.oridcore.network.RetrofitManager;
 
 import java.util.List;
+import java.util.Map;
 
 import rx.Observable;
 
@@ -15,7 +16,7 @@ import rx.Observable;
 
 public class JobModel {
 
-    public static final int DEFALT_PAGESIZE = 5;
+    public static final int DEFALT_PAGESIZE = 12;
 
     public Observable<ResponseObject<List<CareerJob>>> queryJobList(int pageNum, int pageSize) {
         return RetrofitManager
@@ -29,6 +30,13 @@ public class JobModel {
                 .getInstance()
                 .createReq(JobApi.class)
                 .getJobDetailByID(jobID);
+    }
+
+    public Observable<ResponseObject<List<CareerJob>>> queryJobListByCondition(Map<String, Object> params) {
+        return RetrofitManager
+                .getInstance()
+                .createReq(JobApi.class)
+                .searchJobList(params);
     }
 
 }

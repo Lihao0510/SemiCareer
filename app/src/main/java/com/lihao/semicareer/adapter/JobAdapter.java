@@ -9,11 +9,9 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.lihao.semicareer.R;
 import com.lihao.semicareer.application.CoreApplication;
 import com.lihao.semicareer.entity.CareerJob;
-import com.lihao.semicareer.entity.JobItem;
 import com.oridway.oridcore.eventmessage.ListEvent;
 import com.oridway.oridcore.tools.GlideApp;
 import com.oridway.oridcore.utils.LogUtil;
-import com.oridway.oridcore.utils.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -54,7 +52,7 @@ public class JobAdapter extends BaseQuickAdapter<CareerJob, BaseViewHolder> {
         }
     }
 
-    private String getCompanySize(int careerCount) {
+    public static String getCompanySize(int careerCount) {
         String companySize = "10000人以上";
         if (careerCount < 20) {
             companySize = "20人以下";
