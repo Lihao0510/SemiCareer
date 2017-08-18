@@ -9,7 +9,15 @@ import android.view.ViewGroup;
 
 import com.lihao.semicareer.R;
 import com.lihao.semicareer.contract.JobContract;
+import com.lihao.semicareer.contract.NewsContract;
+import com.lihao.semicareer.presenter.NewsPresenterImpl;
+import com.oridway.oridcore.eventmessage.ListEvent;
+import com.oridway.oridcore.utils.LogUtil;
 import com.oridway.oridcore.widge.JobPtrHeader;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
@@ -20,12 +28,14 @@ import in.srain.cube.views.ptr.PtrHandler;
  * Created by lihao on 2017/8/11.
  */
 
-public class NewsFragment extends BaseFragment implements JobContract.JobView, JobPtrHeader.PtrToolbarListener {
+public class NewsFragment extends BaseFragment implements NewsContract.NewsView, JobPtrHeader.PtrToolbarListener {
 
     @BindView(R.id.pfl_job)
     PtrFrameLayout ptrLayout;
     @BindView(R.id.rv_news)
     RecyclerView newsListView;
+
+    private NewsContract.NewsPresenter mPresenter;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,7 +44,10 @@ public class NewsFragment extends BaseFragment implements JobContract.JobView, J
 
     @Override
     protected void initFragment() {
+        mPresenter = new NewsPresenterImpl(this);
+        EventBus.getDefault().register(this);
         initPtrLayout();
+        mPresenter.buildList(newsListView);
     }
 
     private void initPtrLayout() {
@@ -48,6 +61,7 @@ public class NewsFragment extends BaseFragment implements JobContract.JobView, J
         ptrLayout.setPtrHandler(new PtrHandler() {
             @Override
             public void onRefreshBegin(PtrFrameLayout frame) {
+                mPresenter.onRefresh();
 
             }
 
@@ -64,6 +78,17 @@ public class NewsFragment extends BaseFragment implements JobContract.JobView, J
     }
 
     @Override
+    public Context getActivityContext() {
+        return getContext();
+    }
+
+    @Override
+    public void onRefreshFinished() {
+        ptrLayout.refreshComplete();
+    }
+
+
+    @Override
     public void hideToolbar() {
 
     }
@@ -74,12 +99,16 @@ public class NewsFragment extends BaseFragment implements JobContract.JobView, J
     }
 
     @Override
-    public Context getActivityContext() {
-        return getContext();
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 
-    @Override
-    public void onFinishRefresh() {
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void loadMoreData(ListEvent event) {
+        if (event.eventType == ListEvent.NEWS_LIST_LOADMORE) {
+            LogUtil.debugLog("收到加载更多信息!");
+            mPresenter.onLoadMore();
+        }
     }
 }

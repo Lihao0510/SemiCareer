@@ -7,6 +7,7 @@ package com.oridway.oridcore.eventmessage;
 public class ListEvent {
 
     public static final int HOME_JOB_LIST_LOADMORE = 1000;
+    public static final int NEWS_LIST_LOADMORE = 1001;
 
 
     public int eventType;

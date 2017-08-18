@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:layout_marginBottom="3dp"
-    android:layout_marginTop="9dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginLeft="12dp"
+    android:layout_marginRight="12dp"
+    android:layout_marginTop="8dp"
     android:background="@drawable/selector_background_whitebutton">
 
     <ImageView

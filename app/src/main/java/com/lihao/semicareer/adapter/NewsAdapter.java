@@ -9,7 +9,11 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.lihao.semicareer.R;
 import com.lihao.semicareer.application.CoreApplication;
 import com.lihao.semicareer.entity.CareerNews;
+import com.oridway.oridcore.eventmessage.ListEvent;
 import com.oridway.oridcore.tools.GlideApp;
+import com.oridway.oridcore.utils.LogUtil;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -33,5 +37,9 @@ public class NewsAdapter extends BaseQuickAdapter<CareerNews, BaseViewHolder> {
 
             }
         });
+        if (helper.getAdapterPosition() == getData().size() - 1) {
+            LogUtil.debugLog("触发加载更多:" + helper.getAdapterPosition());
+            EventBus.getDefault().post(ListEvent.newEvent(ListEvent.NEWS_LIST_LOADMORE));
+        }
     }
 }

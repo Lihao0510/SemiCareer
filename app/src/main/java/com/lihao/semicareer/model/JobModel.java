@@ -16,7 +16,7 @@ import rx.Observable;
 
 public class JobModel {
 
-    public static final int DEFALT_PAGESIZE = 12;
+    public static final int DEFALT_PAGESIZE = 5;
 
     public Observable<ResponseObject<List<CareerJob>>> queryJobList(int pageNum, int pageSize) {
         return RetrofitManager

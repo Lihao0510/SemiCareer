@@ -1,5 +1,6 @@
 package com.lihao.semicareer.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.lihao.semicareer.R;
+import com.lihao.semicareer.contract.MyContract;
+import com.lihao.semicareer.presenter.MyPresenterImpl;
 import com.oridway.oridcore.tools.GlideApp;
 import com.oridway.oridcore.utils.ToastUtil;
 
@@ -21,7 +24,7 @@ import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
  * Created by lihao on 2017/8/11.
  */
 
-public class MyFragment extends BaseFragment {
+public class MyFragment extends BaseFragment implements MyContract.MyView {
 
 
     @BindView(R.id.sv_center_container)
@@ -57,6 +60,8 @@ public class MyFragment extends BaseFragment {
     @BindView(R.id.ll_center_mydepartment)
     LinearLayout departmentButton;
 
+    private MyContract.MyPresenter mPresenter;
+
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_my, container, false);
@@ -64,9 +69,11 @@ public class MyFragment extends BaseFragment {
 
     @Override
     protected void initFragment() {
+        mPresenter = new MyPresenterImpl(this);
         initShowMessage();
         initClickListener();
         OverScrollDecoratorHelper.setUpOverScroll(centerContainer);
+        mPresenter.getMessageCount();
     }
 
     private void initShowMessage() {
@@ -123,5 +130,17 @@ public class MyFragment extends BaseFragment {
             default:
                 break;
         }
+    }
+
+    @Override
+    public Context getActivityContext() {
+        return getContext();
+    }
+
+    @Override
+    public void updateMessageStatus(int lookNum, int interviewNum, int messageNum) {
+        lookCount.setText("" + lookNum);
+        interviewCount.setText("" + interviewNum);
+        messageCount.setText("" + messageNum);
     }
 }

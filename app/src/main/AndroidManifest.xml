@@ -39,7 +39,17 @@
         <activity
             android:name=".activity.SearchActivity"
             android:label="@string/title_activity_search"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activity.JobDetailActivity" />
+        <activity android:name=".activity.CompanyDetailActivity" />
+        <activity android:name=".activity.JobListActivity" />
+        <activity android:name=".activity.CompanyListActivity" />
+        <activity android:name=".activity.MyMessageActivity" />
+        <activity android:name=".activity.ResumeActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.MessageActivity" />
+        <activity android:name=".activity.PrivateActivity" />
+        <activity android:name=".activity.NewsDetailActivity"></activity>
     </application>
 
 </manifest>

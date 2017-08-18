@@ -11,6 +11,8 @@ public interface NewsContract {
 
     interface NewsView {
         Context getActivityContext();
+
+        void onRefreshFinished();
     }
 
     interface NewsPresenter {
@@ -19,5 +21,7 @@ public interface NewsContract {
         void buildList(RecyclerView recyclerView);
 
         void onRefresh();
+
+        void onLoadMore();
     }
 }
