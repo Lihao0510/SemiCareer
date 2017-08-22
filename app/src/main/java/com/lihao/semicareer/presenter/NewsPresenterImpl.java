@@ -9,7 +9,6 @@ import com.lihao.semicareer.entity.CareerNews;
 import com.lihao.semicareer.model.JobModel;
 import com.lihao.semicareer.model.NewsModel;
 import com.oridway.oridcore.network.ResponseObject;
-import com.oridway.oridcore.utils.LogUtil;
 import com.oridway.oridcore.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -56,6 +56,7 @@ public class NewsPresenterImpl implements NewsContract.NewsPresenter {
         newsAdapter = new NewsAdapter(newsList);
         recyclerView.setAdapter(newsAdapter);
         recyclerView.setLayoutManager(layoutManager);
+        OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
         newsAdapter.notifyDataSetChanged();
     }
 
@@ -75,7 +76,7 @@ public class NewsPresenterImpl implements NewsContract.NewsPresenter {
 
         Map<String, Object> params = new HashMap<>();
         params.put("pageNum", curPageNum);
-        params.put("pageSize", JobModel.DEFALT_PAGESIZE);
+        params.put("pageSize", JobModel.DEFALT_JOB_PAGESIZE);
         if (newsTag != -1) {
             params.put("newsTag", newsTag);
         }

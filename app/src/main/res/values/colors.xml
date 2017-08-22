@@ -301,5 +301,8 @@
     <color name="bluegrey900">#263238</color>
 
     <color name="translucent">#00FFFFFF</color>
+    <color name="translucent50">#88FFFFFF</color>
+    <color name="translucent75">#44FFFFFF</color>
+    <color name="translucent25">#BBFFFFFF</color>
 
 </resources>

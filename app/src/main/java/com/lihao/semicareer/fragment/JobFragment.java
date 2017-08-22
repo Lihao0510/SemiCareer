@@ -4,22 +4,23 @@ import android.animation.ArgbEvaluator;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.lihao.semicareer.R;
+import com.lihao.semicareer.activity.JobDetailActivity;
+import com.lihao.semicareer.activity.JobSearchActivity;
 import com.lihao.semicareer.contract.JobContract;
 import com.lihao.semicareer.presenter.JobPresenterImpl;
 import com.oridway.oridcore.eventmessage.ListEvent;
 import com.oridway.oridcore.tools.BannerImageLoader;
+import com.oridway.oridcore.utils.ListUtil;
 import com.oridway.oridcore.utils.LogUtil;
 import com.oridway.oridcore.widge.JobPtrHeader;
 import com.youth.banner.Banner;
@@ -37,8 +38,6 @@ import butterknife.BindView;
 import in.srain.cube.views.ptr.PtrDefaultHandler;
 import in.srain.cube.views.ptr.PtrFrameLayout;
 import in.srain.cube.views.ptr.PtrHandler;
-import in.srain.cube.views.ptr.header.MaterialHeader;
-import in.srain.cube.views.ptr.header.StoreHouseHeader;
 
 /**
  * Created by lihao on 2017/8/11.
@@ -68,6 +67,7 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
     private JobContract.JobPresenter mPresenter;
 
     private boolean toolbarVisible = true;
+    private boolean canLoadMore = true;
 
     private AlphaAnimation hideAnim;
     private AlphaAnimation showAnim;
@@ -151,6 +151,10 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
+                LogUtil.debugLog("是否滑动到底部:" + ListUtil.isSlideToBottom(recyclerView));
+                if (ListUtil.isSlideToBottom(recyclerView) && canLoadMore) {
+                    mPresenter.loadMoreData();
+                }
             }
 
             @Override
@@ -188,7 +192,7 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_job_searchbar:
-                pflLayout.autoRefresh();
+                JobSearchActivity.startActivity(getContext());
                 break;
         }
     }
@@ -201,6 +205,11 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
     @Override
     public void onFinishRefresh() {
         pflLayout.refreshComplete();
+    }
+
+    @Override
+    public void setCanLoadMore(boolean canLoadMore) {
+        this.canLoadMore = canLoadMore;
     }
 
     @Override
@@ -231,9 +240,17 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void loadMoreData(ListEvent event) {
-        if (event.eventType == ListEvent.HOME_JOB_LIST_LOADMORE) {
+        /*if (event.eventType == ListEvent.HOME_JOB_LIST_LOADMORE) {
             LogUtil.debugLog("收到加载更多信息!");
             mPresenter.loadMoreData();
+        }*/
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void goJobDetail(ListEvent event) {
+        if (event.eventType == ListEvent.HOME_JOB_LIST_CLICK) {
+            LogUtil.debugLog("jobID:" + event.eventBody);
+            JobDetailActivity.startActivity(getContext(), (int) event.eventBody);
         }
     }
 }

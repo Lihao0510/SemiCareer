@@ -16,6 +16,9 @@ import rx.Observable;
 
 public class MessageModel {
 
+    public static final int DEFALT_MESSAGE_PAGESIZE = 5;
+
+
     public Observable<ResponseObject<List<CareerMessage>>> queryMessageListByCondition(Map<String, Object> params) {
         return RetrofitManager
                 .getInstance()

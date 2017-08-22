@@ -1,9 +1,15 @@
 package com.lihao.semicareer.activity;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
+import com.jaeger.library.StatusBarUtil;
+import com.lihao.semicareer.R;
 import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
@@ -14,7 +20,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity;
  * Created by lihao on 2017/8/15.
  */
 
-public abstract class SwipeBackBaseActivity extends SwipeBackActivity {
+public abstract class SwipeBackBaseActivity extends SwipeBackActivity implements View.OnClickListener {
 
     protected Context activityContext;
     private SwipeBackLayout mSwipeBackLayout;
@@ -28,6 +34,15 @@ public abstract class SwipeBackBaseActivity extends SwipeBackActivity {
         setSwipeBackEnable(true);
         mSwipeBackLayout = getSwipeBackLayout();
         mSwipeBackLayout.setEdgeTrackingEnabled(SwipeBackLayout.EDGE_LEFT);
+        if (changeStatusbarColor()) {
+            StatusBarUtil.setColorNoTranslucent(this, getResources().getColor(R.color.colorPrimary));
+        } else {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.setStatusBarColor(getResources().getColor(R.color.translucent));
+            }
+        }
         initActivity();
     }
 
@@ -46,5 +61,7 @@ public abstract class SwipeBackBaseActivity extends SwipeBackActivity {
         super.onPause();
         MobclickAgent.onPause(this);
     }
+
+    protected abstract boolean changeStatusbarColor();
 
 }

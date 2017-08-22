@@ -14,6 +14,8 @@ public interface JobContract {
         Context getActivityContext();
 
         void onFinishRefresh();
+
+        void setCanLoadMore(boolean canLoadMore);
     }
 
     interface JobPresenter {

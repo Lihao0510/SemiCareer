@@ -42,12 +42,12 @@ public interface JobApi {
      * Query company list observable.
      *
      * @param params the params
-     * start: 开始行数
-     * limit: 返回的最大行数
-     * copanyCity: (可选)城市编码
-     * searchLine: (可选)查询字符串
-     * companyType: (可选)公司类型
-     * companyTag: (可选)公司行业
+     *               start: 开始行数
+     *               limit: 返回的最大行数
+     *               copanyCity: (可选)城市编码
+     *               searchLine: (可选)查询字符串
+     *               companyType: (可选)公司类型
+     *               companyTag: (可选)公司行业
      * @return the observable
      */
     @POST("/career/querycompany")
@@ -67,14 +67,26 @@ public interface JobApi {
      * Search job list observable.
      *
      * @param params the params
-     * start: 开始行数
-     * limit: 返回的最大行数
-     * cityCode: (可选)城市编码
-     * searchLine: (可选)查询字符串
+     *               start: 开始行数
+     *               limit: 返回的最大行数
+     *               cityCode: (可选)城市编码
+     *               searchLine: (可选)查询字符串
      * @return the observable
      */
     @POST("/career/searchjoblist")
     @FormUrlEncoded
     Observable<ResponseObject<List<CareerJob>>> searchJobList(@FieldMap Map<String, Object> params);
+
+
+    /*
+    * @param searchMap需要包含的参数为:
+    * start: 开始行数
+    * limit: 返回的最大行数
+    * cityCode: (可选)城市编码
+    * jobType: (可选)查询字符串
+    * */
+    @POST("/career/getrecommand")
+    @FormUrlEncoded
+    Observable<ResponseObject<List<CareerJob>>> recommandJobList(@FieldMap Map<String, Object> params);
 
 }

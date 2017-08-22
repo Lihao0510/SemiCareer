@@ -9,8 +9,17 @@ import android.view.ViewGroup;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.lihao.semicareer.R;
+import com.lihao.semicareer.activity.CompanyDetailActivity;
+import com.lihao.semicareer.activity.CompanySearchActivity;
+import com.lihao.semicareer.activity.JobDetailActivity;
 import com.lihao.semicareer.contract.CompanyContract;
 import com.lihao.semicareer.presenter.CompanyPresenterImpl;
+import com.oridway.oridcore.eventmessage.ListEvent;
+import com.oridway.oridcore.utils.LogUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 
@@ -35,6 +44,7 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
     @Override
     protected void initFragment() {
         mPresenter = new CompanyPresenterImpl(this);
+        EventBus.getDefault().register(this);
         initClickListener();
         buildCompanyList();
     }
@@ -49,9 +59,9 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.itv_company_search:
-
+                CompanySearchActivity.startActivity(getContext());
                 break;
         }
     }
@@ -59,5 +69,19 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
     @Override
     public Context getActivityContext() {
         return getContext();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void goCompanyDetail(ListEvent event) {
+        if (event.eventType == ListEvent.HOME_COMPANY_LIST_CLICK) {
+            LogUtil.debugLog("CompanyID:" + event.eventBody);
+            CompanyDetailActivity.startActivity(getContext(), (int) event.eventBody);
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
     }
 }

@@ -18,6 +18,9 @@ import rx.Observable;
 
 public class NewsModel {
 
+    public static final int DEFALT_NEWS_PAGESIZE = 5;
+
+
     public Observable<ResponseObject<List<CareerNews>>> getNewsListByCondition(Map<String, Object> params) {
         return RetrofitManager
                 .getInstance()

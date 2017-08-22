@@ -4,7 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.lihao.semicareer.adapter.JobAdapter;
+import com.lihao.semicareer.adapter.MainJobAdapter;
 import com.lihao.semicareer.contract.JobContract;
 import com.lihao.semicareer.entity.CareerJob;
 import com.lihao.semicareer.model.JobModel;
@@ -29,7 +29,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
     private JobContract.JobView mView;
     private List<CareerJob> jobItemList;
     private LinearLayoutManager layoutManager;
-    private JobAdapter jobAdapter;
+    private MainJobAdapter mainJobAdapter;
     private JobModel mModel;
 
     private int curJobPage = 0;
@@ -49,22 +49,22 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
     @Override
     public void buildList(RecyclerView recyclerView) {
         initJobList();
-        jobAdapter = new JobAdapter(jobItemList);
-        recyclerView.setAdapter(jobAdapter);
+        mainJobAdapter = new MainJobAdapter(jobItemList);
+        recyclerView.setAdapter(mainJobAdapter);
         recyclerView.setLayoutManager(layoutManager);
         OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
-        jobAdapter.notifyDataSetChanged();
+        mainJobAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void setBanner(View view) {
-        jobAdapter.addHeaderView(view);
+        mainJobAdapter.addHeaderView(view);
     }
 
     @Override
     public void loadMoreData() {
         curJobPage++;
-        mModel.queryJobList(curJobPage, JobModel.DEFALT_PAGESIZE)
+        mModel.queryJobList(curJobPage, JobModel.DEFALT_JOB_PAGESIZE)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResponseObject<List<CareerJob>>>() {
@@ -83,6 +83,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
                         switch (listResponseObject.status) {
                             case 0:
                                 ToastUtil.showToast("没有更多数据!");
+                                mView.setCanLoadMore(false);
                                 curJobPage--;
                                 break;
                             case 4:
@@ -90,7 +91,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
                                 break;
                             case 1:
                                 jobItemList.addAll(listResponseObject.getResult());
-                                jobAdapter.notifyDataSetChanged();
+                                mainJobAdapter.notifyDataSetChanged();
                                 break;
                         }
                     }
@@ -100,6 +101,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
 
     @Override
     public void refreshData() {
+        mView.setCanLoadMore(true);
         initJobList();
     }
 
@@ -107,7 +109,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
     private void initJobList() {
         curJobPage = 0;
         jobItemList.clear();
-        mModel.queryJobList(0, JobModel.DEFALT_PAGESIZE)
+        mModel.queryJobList(0, JobModel.DEFALT_JOB_PAGESIZE)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<ResponseObject<List<CareerJob>>>() {
@@ -128,13 +130,14 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
                         switch (listResponseObject.status) {
                             case 0:
                                 LogUtil.debugLog("没有更多数据!");
+                                mView.setCanLoadMore(false);
                                 break;
                             case 4:
 
                                 break;
                             case 1:
                                 jobItemList.addAll(listResponseObject.getResult());
-                                jobAdapter.notifyDataSetChanged();
+                                mainJobAdapter.notifyDataSetChanged();
                                 break;
                         }
                     }

@@ -11,6 +11,7 @@ import com.lihao.semicareer.application.CoreApplication;
 import com.lihao.semicareer.entity.CareerJob;
 import com.oridway.oridcore.eventmessage.ListEvent;
 import com.oridway.oridcore.tools.GlideApp;
+import com.oridway.oridcore.utils.Constant;
 import com.oridway.oridcore.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -18,35 +19,34 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.List;
 
 /**
- * Created by lihao on 2017/8/13.
+ * Created by lihao on 2017/8/21.
  */
 
-public class JobAdapter extends BaseQuickAdapter<CareerJob, BaseViewHolder> {
+public class RecommendJobAdapter extends BaseQuickAdapter<CareerJob, BaseViewHolder> {
 
-    public static final String[] companyType = {"上市公司", "国资企业", "合资企业", "外资企业", "私人企业"};
-    public static final String[] jobEduType = {"学历不限", "大专", "本科", "硕士", "博士"};
-    public static final String[] jobExpType = {"经验不限", "1-2年", "3-5年", "5-8年", "8年以上"};
 
-    public JobAdapter(@Nullable List<CareerJob> data) {
-        super(R.layout.item_job_desc, data);
+    public RecommendJobAdapter(@Nullable List<CareerJob> data) {
+        super(R.layout.item_job_recommend, data);
     }
 
     @Override
     protected void convert(BaseViewHolder helper, final CareerJob item) {
         helper.setText(R.id.tv_job_name, item.jobCName)
-                .setText(R.id.tv_job_company_desc, item.companyDetail.companyDesc + " | " + getCompanySize(item.companyDetail.companyCareer) + " | " + companyType[item.companyDetail.companyType])
+                .setText(R.id.tv_job_company_desc, item.companyDetail.companyDesc + " | " + getCompanySize(item.companyDetail.companyCareer) + " | " + Constant.companyType[item.companyDetail.companyType])
                 .setText(R.id.tv_job_salary, item.jobSalary)
                 .setText(R.id.tv_job_time, item.jobTime.substring(0, 10))
                 .setText(R.id.tv_job_company_name, item.companyDetail.companyName)
-                .setText(R.id.tv_job_detail, item.cityName + " | " + item.districtName + " | " + jobEduType[item.jobEdu] + " | " + jobExpType[item.jobExp]);
+                .setText(R.id.tv_job_detail, item.cityName + " | " + item.districtName + " | " + Constant.jobEduType[item.jobEdu] + " | " + Constant.jobExpType[item.jobExp]);
         GlideApp.with(CoreApplication.getGlobalContext()).load(item.companyDetail.companyLogo).into((ImageView) helper.itemView.findViewById(R.id.iv_job_company_logo));
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ListEvent event = ListEvent.newEvent(ListEvent.HOME_JOB_LIST_CLICK);
+                event.eventBody = item.jobID;
+                EventBus.getDefault().post(event);
             }
         });
-        if (helper.getAdapterPosition() == getData().size()){
+        if (helper.getAdapterPosition() == getData().size()) {
             LogUtil.debugLog("触发加载更多:" + helper.getAdapterPosition());
             EventBus.getDefault().post(ListEvent.newEvent(ListEvent.HOME_JOB_LIST_LOADMORE));
         }

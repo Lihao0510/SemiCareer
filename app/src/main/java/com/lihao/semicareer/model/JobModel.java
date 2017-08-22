@@ -16,7 +16,7 @@ import rx.Observable;
 
 public class JobModel {
 
-    public static final int DEFALT_PAGESIZE = 5;
+    public static final int DEFALT_JOB_PAGESIZE = 5;
 
     public Observable<ResponseObject<List<CareerJob>>> queryJobList(int pageNum, int pageSize) {
         return RetrofitManager
@@ -37,6 +37,13 @@ public class JobModel {
                 .getInstance()
                 .createReq(JobApi.class)
                 .searchJobList(params);
+    }
+
+    public Observable<ResponseObject<List<CareerJob>>> recommandJobList(Map<String, Object> params) {
+        return RetrofitManager
+                .getInstance()
+                .createReq(JobApi.class)
+                .recommandJobList(params);
     }
 
 }

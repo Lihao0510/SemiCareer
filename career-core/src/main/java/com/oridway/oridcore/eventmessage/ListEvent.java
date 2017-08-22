@@ -8,6 +8,9 @@ public class ListEvent {
 
     public static final int HOME_JOB_LIST_LOADMORE = 1000;
     public static final int NEWS_LIST_LOADMORE = 1001;
+    public static final int HOME_JOB_LIST_CLICK = 1002;
+    public static final int HOME_COMPANY_LIST_CLICK = 1003;
+    public static final int NEWS_LIST_CLICK = 1004;
 
 
     public int eventType;

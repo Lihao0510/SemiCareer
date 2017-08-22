@@ -3,10 +3,9 @@ package com.lihao.semicareer.presenter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.lihao.semicareer.adapter.CompanyAdapter;
+import com.lihao.semicareer.adapter.MainCompanyAdapter;
 import com.lihao.semicareer.contract.CompanyContract;
 import com.lihao.semicareer.entity.CareerCompany;
-import com.lihao.semicareer.entity.CareerJob;
 import com.lihao.semicareer.model.CompanyModel;
 import com.lihao.semicareer.model.JobModel;
 import com.oridway.oridcore.network.ResponseObject;
@@ -32,7 +31,7 @@ public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
     private CompanyModel companyModel;
     private JobModel jobModel;
 
-    private CompanyAdapter mAdapter;
+    private MainCompanyAdapter mAdapter;
     private List<CareerCompany> companyList;
     private LinearLayoutManager layoutManager;
 
@@ -63,7 +62,7 @@ public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
     @Override
     public void buildList(RecyclerView recyclerView) {
         getCompanyList("", "", -1, -1);
-        mAdapter = new CompanyAdapter(companyList);
+        mAdapter = new MainCompanyAdapter(companyList);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(layoutManager);
         OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);
@@ -74,7 +73,7 @@ public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
 
         Map<String, Object> params = new HashMap<>();
         params.put("pageNum", curPage);
-        params.put("pageSize", JobModel.DEFALT_PAGESIZE);
+        params.put("pageSize", JobModel.DEFALT_JOB_PAGESIZE);
         params.put("companyCity", companyCity);
         params.put("searchLine", searchLine);
 

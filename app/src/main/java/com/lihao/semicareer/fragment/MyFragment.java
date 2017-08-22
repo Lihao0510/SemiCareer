@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.lihao.semicareer.R;
+import com.lihao.semicareer.activity.LoginActivity;
 import com.lihao.semicareer.contract.MyContract;
 import com.lihao.semicareer.presenter.MyPresenterImpl;
 import com.oridway.oridcore.tools.GlideApp;
@@ -94,6 +95,7 @@ public class MyFragment extends BaseFragment implements MyContract.MyView {
         noticeButton.setOnClickListener(this);
         departmentButton.setOnClickListener(this);
         mymessageButton.setOnClickListener(this);
+        userName.setOnClickListener(this);
     }
 
     @Override
@@ -126,6 +128,9 @@ public class MyFragment extends BaseFragment implements MyContract.MyView {
                 break;
             case R.id.ll_center_mymessage:
 
+                break;
+            case R.id.tv_center_name:
+                LoginActivity.startActivity(getActivityContext());
                 break;
             default:
                 break;

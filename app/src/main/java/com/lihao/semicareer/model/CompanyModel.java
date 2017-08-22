@@ -16,6 +16,8 @@ import rx.Observable;
 
 public class CompanyModel {
 
+    public static final int DEFALT_COMPANY_PAGESIZE = 5;
+
     public Observable<ResponseObject<List<CareerCompany>>> queryCompanyByCondition(Map<String, Object> params) {
         return RetrofitManager
                 .getInstance()

@@ -1,9 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.lihao.semicareer.activity.CompanyDetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@color/colorPrimary" />
+
+    <include layout="@layout/group_toolbar_normal" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:id="@+id/sv_company_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/pureWhite"
+                    android:orientation="vertical">
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:text="{md-account-balance}  公司概况"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/alittleGray" />
+                </LinearLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="@color/pureWhite">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/iv_company_logo"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/icon_company_lagou"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:riv_border_width="0dip"
+                        app:riv_corner_radius="8dip"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginBottom="8dp" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/gline_hori"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_end="27dp"
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="75dp" />
+
+                    <android.support.constraint.Guideline
+                        android:id="@+id/gline_verti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="72dp"
+                        tools:layout_editor_absoluteX="72dp"
+                        tools:layout_editor_absoluteY="0dp" />
+
+                    <TextView
+                        android:id="@+id/tv_company_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="吊丝科技"
+                        android:textColor="@color/darkBlack"
+                        android:textSize="@dimen/font_h3"
+                        android:textStyle="normal"
+                        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_company_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:visibility="gone"
+                        android:text="哈尔滨市香坊区红旗大街"
+                        android:textColor="@color/lightGray"
+                        android:textSize="@dimen/font_small"
+                        android:textStyle="normal"
+                        android:typeface="monospace"
+                        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_company_name" />
+
+                    <TextView
+                        android:id="@+id/tv_company_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="互联网/工具软件 | 20-50人 | 私人企业"
+                        android:textColor="@color/littleGray"
+                        android:textSize="@dimen/font_middle"
+                        android:textStyle="normal"
+                        android:typeface="monospace"
+                        app:layout_constraintBottom_toTopOf="@+id/gline_hori"
+                        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_company_address" />
+
+                    <TextView
+                        android:id="@+id/tv_company_job"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="提供了27个职位,前往应聘"
+                        android:textColor="@color/littleGray"
+                        android:textSize="@dimen/font_small"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="@+id/gline_verti"
+                        app:layout_constraintTop_toTopOf="@+id/gline_hori"
+                        app:layout_constraintVertical_bias="0.7" />
+
+                    <View
+                        android:layout_width="368dp"
+                        android:layout_height="1px"
+                        android:layout_marginLeft="75dp"
+                        android:background="@color/alittleGray"
+                        app:layout_constraintBottom_toTopOf="@+id/gline_hori"
+                        app:layout_constraintLeft_toLeftOf="parent" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/pureWhite"
+                    android:orientation="vertical">
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:text="{md-place}  公司地址"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/alittleGray" />
+
+                    <TextView
+                        android:id="@+id/tv_company_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:lines="2"
+                        android:paddingLeft="16dp"
+                        android:text="光明新区塘明大道2号"
+                        android:textSize="@dimen/font_small" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/pureWhite"
+                    android:orientation="vertical">
+
+                    <com.joanzapata.iconify.widget.IconTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="16dp"
+                        android:text="{mdi-file-outline}  公司简介"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:background="@color/alittleGray" />
+
+                    <TextView
+                        android:id="@+id/tv_company_detail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="5dp"
+                        android:paddingBottom="20dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="16dp"
+                        android:paddingTop="20dp"
+                        android:text="@string/jobdetail_jd"
+                        android:textColor="@color/dimBar"
+                        android:textSize="@dimen/font_middle"
+                        android:typeface="monospace" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_company_joblist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_conner_primary"
+            android:text="查看该公司发布的职位"
+            android:textColor="@color/pureWhite" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

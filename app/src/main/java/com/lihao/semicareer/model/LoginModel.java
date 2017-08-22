@@ -5,4 +5,5 @@ package com.lihao.semicareer.model;
  */
 
 public class LoginModel {
+
 }

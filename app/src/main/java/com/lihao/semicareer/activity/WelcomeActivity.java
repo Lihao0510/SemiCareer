@@ -53,11 +53,17 @@ public class WelcomeActivity extends BaseActivity {
     public void goMainActivity(GlobalEvent event) {
         if (event.eventType == GlobalEvent.EXTERNAL_COMPONENTS_LOAD_COMPLETED) {
             LogUtil.debugLog("goMainActivity");
-            if (isFirstLaunch) {
-                LogUtil.debugLog("前往引导页!");
-            } else {
-                MainActivity.startActivity(this);
-            }
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (isFirstLaunch) {
+                        LogUtil.debugLog("前往引导页!");
+                    } else {
+                        MainActivity.startActivity(WelcomeActivity.this);
+                    }
+                    finish();
+                }
+            }, 2000);
         }
     }
 

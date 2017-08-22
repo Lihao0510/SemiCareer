@@ -5,4 +5,6 @@ package com.lihao.semicareer.api;
  */
 
 public interface ResumeApi {
+
+
 }

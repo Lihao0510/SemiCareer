@@ -53,7 +53,7 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.umeng.analytics:analytics:latest.integration'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'me.everything:overscroll-decor-android:1.0.4'
+    //compile 'me.everything:overscroll-decor-android:1.0.4'
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-entypo:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-typicons:2.2.2'
@@ -74,4 +74,7 @@ dependencies {
     compile 'me.imid.swipebacklayout.lib:library:1.0.0'
     compile 'com.mylhyl:zxingscanner:1.5.0'
     compile 'com.github.maning0303:MNProgressHUD:V1.0.0'
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.zhy:flowlayout-lib:1.0.3'
+    compile 'com.github.dongjunkun:DropDownMenu:1.0.4'
 }
