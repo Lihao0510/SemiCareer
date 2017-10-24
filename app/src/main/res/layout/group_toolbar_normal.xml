@@ -37,6 +37,6 @@
         android:layout_alignParentRight="true"
         android:text="{entypo-chevron-left}"
         android:textColor="@color/selector_icon_button"
-        android:textSize="@dimen/icon_large" />
+        android:textSize="@dimen/icon_normal" />
 
 </RelativeLayout>

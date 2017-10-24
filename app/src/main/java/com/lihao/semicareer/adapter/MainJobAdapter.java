@@ -1,5 +1,6 @@
 package com.lihao.semicareer.adapter;
 
+import android.content.Context;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
@@ -7,6 +8,7 @@ import android.widget.ImageView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.lihao.semicareer.R;
+import com.lihao.semicareer.activity.JobDetailActivity;
 import com.lihao.semicareer.application.CoreApplication;
 import com.lihao.semicareer.entity.CareerJob;
 import com.oridway.oridcore.eventmessage.ListEvent;
@@ -24,9 +26,11 @@ import java.util.List;
 
 public class MainJobAdapter extends BaseQuickAdapter<CareerJob, BaseViewHolder> {
 
+    private Context mContext;
 
-    public MainJobAdapter(@Nullable List<CareerJob> data) {
+    public MainJobAdapter(@Nullable List<CareerJob> data, Context context) {
         super(R.layout.item_job_desc, data);
+        mContext = context;
     }
 
     @Override
@@ -41,9 +45,10 @@ public class MainJobAdapter extends BaseQuickAdapter<CareerJob, BaseViewHolder> 
         helper.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ListEvent event = ListEvent.newEvent(ListEvent.HOME_JOB_LIST_CLICK);
+                /*ListEvent event = ListEvent.newEvent(ListEvent.HOME_JOB_LIST_CLICK);
                 event.eventBody = item.jobID;
-                EventBus.getDefault().post(event);
+                EventBus.getDefault().post(event);*/
+                JobDetailActivity.startActivity(mContext, item.jobID);
             }
         });
         if (helper.getAdapterPosition() == getData().size()) {

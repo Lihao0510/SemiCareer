@@ -14,6 +14,7 @@ import com.joanzapata.iconify.fonts.MeteoconsModule;
 import com.joanzapata.iconify.fonts.SimpleLineIconsModule;
 import com.joanzapata.iconify.fonts.TypiconsModule;
 import com.joanzapata.iconify.fonts.WeathericonsModule;
+import com.lihao.semicareer.entity.LoginMessage;
 import com.oridway.oridcore.eventmessage.GlobalEvent;
 import com.oridway.oridcore.utils.AssetUtil;
 import com.oridway.oridcore.utils.ConfigUtil;
@@ -37,6 +38,8 @@ public class CoreApplication extends Application {
 
     private static Context applicationContext;
     private static HashMap<String, String> appProperties;
+    public static LoginMessage appLoginMessage;
+    public static boolean loginStatus = false;
 
     @Override
     public void onCreate() {

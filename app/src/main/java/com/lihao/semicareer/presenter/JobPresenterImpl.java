@@ -4,6 +4,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.lihao.semicareer.R;
 import com.lihao.semicareer.adapter.MainJobAdapter;
 import com.lihao.semicareer.contract.JobContract;
 import com.lihao.semicareer.entity.CareerJob;
@@ -49,7 +50,7 @@ public class JobPresenterImpl implements JobContract.JobPresenter {
     @Override
     public void buildList(RecyclerView recyclerView) {
         initJobList();
-        mainJobAdapter = new MainJobAdapter(jobItemList);
+        mainJobAdapter = new MainJobAdapter(jobItemList, mView.getActivityContext());
         recyclerView.setAdapter(mainJobAdapter);
         recyclerView.setLayoutManager(layoutManager);
         OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);

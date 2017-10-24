@@ -46,4 +46,11 @@ public class JobModel {
                 .recommandJobList(params);
     }
 
+    public Observable<ResponseObject<List<CareerJob>>> queryJobListByCompanyID(int companyID) {
+        return RetrofitManager
+                .getInstance()
+                .createReq(JobApi.class)
+                .queryJobByCompanyID(companyID);
+    }
+
 }

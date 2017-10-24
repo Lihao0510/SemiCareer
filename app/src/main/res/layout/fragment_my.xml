@@ -94,7 +94,7 @@
                         android:layout_weight="1" />
 
                     <LinearLayout
-                        android:id="@+id/ll_center_backlog"
+                        android:id="@+id/ll_center_look"
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/selector_background_whitebutton"
@@ -125,7 +125,7 @@
                         android:layout_weight="2" />
 
                     <LinearLayout
-                        android:id="@+id/ll_center_myproject"
+                        android:id="@+id/ll_center_invite"
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/selector_background_whitebutton"
@@ -156,7 +156,7 @@
                         android:layout_weight="2" />
 
                     <LinearLayout
-                        android:id="@+id/ll_center_myapply"
+                        android:id="@+id/ll_center_mail"
                         android:layout_width="70dp"
                         android:layout_height="match_parent"
                         android:background="@drawable/selector_background_whitebutton"
@@ -243,7 +243,7 @@
                     android:background="@color/alittleGray" />
 
                 <LinearLayout
-                    android:id="@+id/ll_center_clockin"
+                    android:id="@+id/ll_center_resume"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/selector_background_whitebutton"
@@ -291,7 +291,7 @@
                     android:background="@color/alittleGray" />
 
                 <LinearLayout
-                    android:id="@+id/ll_center_travel"
+                    android:id="@+id/ll_center_collect"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/selector_background_whitebutton"
@@ -339,7 +339,7 @@
                     android:background="@color/alittleGray" />
 
                 <LinearLayout
-                    android:id="@+id/ll_center_diary"
+                    android:id="@+id/ll_center_private"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/selector_background_whitebutton"
@@ -352,7 +352,7 @@
                         android:layout_marginLeft="16dp"
                         android:background="@drawable/bg_button_conner_green"
                         android:gravity="center"
-                        android:text="{icon-lock}"
+                        android:text="{icon-pin}"
                         android:textColor="@color/pureWhite"
                         android:textSize="@dimen/font_h2" />
 
@@ -360,7 +360,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:text="隐私设置"
+                        android:text="我投递的职位"
                         android:textColor="@color/deepDark"
                         android:textSize="@dimen/font_h3" />
 
@@ -386,7 +386,7 @@
                     android:background="@color/itsWhite" />
 
                 <LinearLayout
-                    android:id="@+id/ll_center_notice"
+                    android:id="@+id/ll_center_reflect"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/selector_background_whitebutton"
@@ -434,7 +434,7 @@
                     android:background="@color/alittleGray" />
 
                 <LinearLayout
-                    android:id="@+id/ll_center_mydepartment"
+                    android:id="@+id/ll_center_setting"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="@drawable/selector_background_whitebutton"

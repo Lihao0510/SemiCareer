@@ -27,7 +27,7 @@ public interface NewsApi {
      * @return the news list by condition
      * @Author Lihao 20170818
      */
-    @POST("/news/querybycondition")
+    @POST("/semi/news/querybycondition")
     @FormUrlEncoded
     Observable<ResponseObject<List<CareerNews>>> getNewsListByCondition(@FieldMap Map<String, Object> params);
 
@@ -38,7 +38,7 @@ public interface NewsApi {
      * @return the news detail by id
      * @Author Lihao 20170818
      */
-    @GET("/news/getdetail")
+    @GET("/semi/news/getdetail")
     Observable<ResponseObject<CareerNews>> getNewsDetailByID(@Query("newsID") int newsID);
 
     /**
@@ -48,7 +48,7 @@ public interface NewsApi {
      * 必选: newsID(int), userID(int), commentText(String)
      * @return the Status
      */
-    @POST("/news/addcomment")
+    @POST("/semi/news/addcomment")
     @FormUrlEncoded
     Observable<ResponseObject<String>> addCommentByNewsID(@FieldMap Map<String, Object> params);
 }

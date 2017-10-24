@@ -54,7 +54,7 @@ public class JobListActivity extends SwipeBackBaseActivity {
 
 
     public static void startActivity(Context context, String searchLine, String cityCode) {
-        Intent intent = new Intent(context, JobDetailActivity.class);
+        Intent intent = new Intent(context, JobListActivity.class);
         intent.putExtra("searchLine", searchLine);
         intent.putExtra("cityCode", cityCode);
         context.startActivity(intent);
@@ -79,7 +79,7 @@ public class JobListActivity extends SwipeBackBaseActivity {
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         searchLine = getIntent().getStringExtra("searchLine");
         cityCode = getIntent().getStringExtra("cityCode");
-        jobAdapter = new MainJobAdapter(resultJobList);
+        jobAdapter = new MainJobAdapter(resultJobList, this);
         listView.setAdapter(jobAdapter);
         listView.setLayoutManager(layoutManager);
     }

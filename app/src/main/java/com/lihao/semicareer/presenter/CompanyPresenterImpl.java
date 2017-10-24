@@ -9,6 +9,7 @@ import com.lihao.semicareer.entity.CareerCompany;
 import com.lihao.semicareer.model.CompanyModel;
 import com.lihao.semicareer.model.JobModel;
 import com.oridway.oridcore.network.ResponseObject;
+import com.oridway.oridcore.utils.LogUtil;
 import com.oridway.oridcore.utils.ToastUtil;
 
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
 
     @Override
     public void loadMoreData() {
+        LogUtil.debugLog("执行加载更多!");
         getCompanyList(curCompanyName, curCompanyCity, curCompanyTag, curCompanyType);
     }
 
@@ -103,6 +105,8 @@ public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
                         switch (listResponseObject.status) {
                             case 0:
                                 ToastUtil.showToast("没有更多数据!");
+                                mView.setCanLoadMore(false);
+                                curPage--;
                                 break;
                             case 4:
 
@@ -110,10 +114,11 @@ public class CompanyPresenterImpl implements CompanyContract.CompanyPresenter {
                             case 1:
                                 companyList.addAll(listResponseObject.getResult());
                                 mAdapter.notifyDataSetChanged();
-                                curPage++;
                                 break;
                         }
                     }
                 });
+
+        curPage++;
     }
 }

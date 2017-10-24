@@ -1,9 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/itsWhite"
+    android:orientation="vertical"
     tools:context="com.lihao.semicareer.activity.SettingActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@color/colorPrimary" />
+
+    <include layout="@layout/group_toolbar_normal" />
+
+    <LinearLayout
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/pureWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="公开我的联系方式"
+                android:textColor="@color/deepDark"
+                android:textSize="@dimen/font_h3" />
+
+            <ToggleButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_toggle_button"
+                android:textOff=""
+                android:checked="true"
+                android:textOn="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alittleGray" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/pureWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="开启站内信推送"
+                android:textColor="@color/deepDark"
+                android:textSize="@dimen/font_h3" />
+
+            <ToggleButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_toggle_button"
+                android:textOff=""
+                android:textOn="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alittleGray" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/pureWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="开启声音与振动"
+                android:textColor="@color/deepDark"
+                android:textSize="@dimen/font_h3" />
+
+            <ToggleButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_toggle_button"
+                android:textOff=""
+                android:checked="true"
+                android:textOn="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alittleGray" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/pureWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentTop="true"
+                android:background="@color/alittleGray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="将我的简历推荐给公司"
+                android:textColor="@color/deepDark"
+                android:textSize="@dimen/font_h3" />
+
+            <ToggleButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/selector_toggle_button"
+                android:textOff=""
+                android:checked="true"
+                android:textOn="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alittleGray" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/pureWhite"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="向我推荐适合的职位"
+                android:textColor="@color/deepDark"
+                android:textSize="@dimen/font_h3" />
+
+            <ToggleButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:checked="true"
+                android:background="@drawable/selector_toggle_button"
+                android:textOff=""
+                android:textOn="" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_alignParentBottom="true"
+                android:background="@color/alittleGray" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_login_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_conner_primary"
+            android:text="退出登录"
+            android:textColor="@color/pureWhite" />
+
+    </LinearLayout>
+</LinearLayout>

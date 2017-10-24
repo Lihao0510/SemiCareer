@@ -151,7 +151,7 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                LogUtil.debugLog("是否滑动到底部:" + ListUtil.isSlideToBottom(recyclerView));
+                LogUtil.debugLog("是否滑动到底部:" + ListUtil.isSlideToBottom(recyclerView) + ";  canloadMore:" + canLoadMore);
                 if (ListUtil.isSlideToBottom(recyclerView) && canLoadMore) {
                     mPresenter.loadMoreData();
                 }
@@ -244,6 +244,12 @@ public class JobFragment extends BaseFragment implements JobContract.JobView, Jo
             LogUtil.debugLog("收到加载更多信息!");
             mPresenter.loadMoreData();
         }*/
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setCanLoadMore(true);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

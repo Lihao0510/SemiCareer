@@ -1,5 +1,7 @@
 package com.lihao.semicareer.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,12 +25,11 @@ public class ResumeActivity extends SwipeBackBaseActivity {
     @BindView(R.id.sv_resume_container)
     ScrollView container;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resume);
+    public static void startActivity(Context context) {
+        Intent intent = new Intent(context, ResumeActivity.class);
+        context.startActivity(intent);
     }
+
 
     @Override
     protected int setLayoutRes() {
@@ -42,11 +43,13 @@ public class ResumeActivity extends SwipeBackBaseActivity {
     }
 
     private void initView() {
+        titleText.setText("我的简历");
         OverScrollDecoratorHelper.setUpOverScroll(container);
     }
 
     private void initClick() {
-
+        backIcon.setOnClickListener(this);
+        rightIcon.setOnClickListener(this);
     }
 
     @Override

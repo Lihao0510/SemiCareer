@@ -1,9 +1,230 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/itsWhite"
+    android:orientation="vertical"
     tools:context="com.lihao.semicareer.activity.MyMessageActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@color/colorPrimary" />
+
+    <include layout="@layout/group_toolbar_normal" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="3dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:id="@+id/sv_mymessage_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@color/pureWhite">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civ_center_head"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="8dp"
+                        android:scaleType="centerCrop"
+                        app:civ_border_color="@color/colorAccent"
+                        app:civ_border_width="2dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_user_cname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="20dp"
+                        android:text="王妮金"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h2"
+                        app:layout_constraintLeft_toRightOf="@+id/civ_center_head"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="8dp"
+                        android:text="用户名: wangnima"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/civ_center_head"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_user_cname"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/pureWhite"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:text="用户ID"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <EditText
+                        android:id="@+id/et_user_id"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@null"
+                        android:editable="false"
+                        android:text="10001"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/pureWhite"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:text="电话号码"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <EditText
+                        android:id="@+id/et_user_phone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@null"
+                        android:editable="false"
+                        android:text="18395795234"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/pureWhite"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:text="邮箱地址"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <EditText
+                        android:id="@+id/et_user_mail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@null"
+                        android:editable="false"
+                        android:text="wnnjjj@sina.com"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/pureWhite"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingLeft="20dp"
+                        android:text="注册日期"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                    <EditText
+                        android:id="@+id/et_user_time"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:background="@null"
+                        android:editable="false"
+                        android:text="2017-7-1"
+                        android:textColor="@color/deepDark"
+                        android:textSize="@dimen/font_h3" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_login_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_conner_primary"
+            android:text="退出登录"
+            android:textColor="@color/pureWhite" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

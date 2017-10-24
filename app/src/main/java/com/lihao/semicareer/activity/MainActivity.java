@@ -12,10 +12,12 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.lihao.semicareer.R;
+import com.lihao.semicareer.application.CoreApplication;
 import com.lihao.semicareer.fragment.CompanyFragment;
 import com.lihao.semicareer.fragment.JobFragment;
 import com.lihao.semicareer.fragment.MyFragment;
 import com.lihao.semicareer.fragment.NewsFragment;
+import com.maning.mndialoglibrary.MStatusDialog;
 import com.oridway.oridcore.utils.LogUtil;
 
 import butterknife.BindView;
@@ -31,6 +33,8 @@ public class MainActivity extends BaseActivity {
     FragmentTabHost mTabHost;
 
     private TabWidget mTabWidget;
+    private MStatusDialog mStatusDialog;
+
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -45,6 +49,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initActivity() {
         initFragmentHost();
+        initLoginMessage();
     }
 
     private void initFragmentHost() {
@@ -60,6 +65,12 @@ public class MainActivity extends BaseActivity {
         mTabWidget.setPadding(0, 15, 0, 15);
     }
 
+    private void initLoginMessage() {
+        if (CoreApplication.loginStatus){
+            showSendSuccessDialog("登陆成功!");
+        }
+    }
+
     private View getTabItemView(String tabTitle, int drawableResId) {
         View tabView = getLayoutInflater().inflate(R.layout.item_tab_indicator, null, false);
         ((ImageView) tabView.findViewById(R.id.iv_indicator_image)).setImageResource(drawableResId);
@@ -70,5 +81,10 @@ public class MainActivity extends BaseActivity {
     @Override
     protected boolean changeStatusbarColor() {
         return false;
+    }
+
+    private void showSendSuccessDialog(String msg) {
+        mStatusDialog = new MStatusDialog(this);
+        mStatusDialog.showSuccess(msg);
     }
 }

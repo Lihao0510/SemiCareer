@@ -139,7 +139,12 @@ public class CompanyDetailActivity extends SwipeBackBaseActivity {
                 finish();
                 break;
             case R.id.bt_company_joblist:
+                goCompanyJobList();
                 break;
         }
+    }
+
+    private void goCompanyJobList() {
+        CompanyJobListActivity.startActivity(this, companyID);
     }
 }

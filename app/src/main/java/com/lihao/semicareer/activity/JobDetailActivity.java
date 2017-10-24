@@ -16,12 +16,17 @@ import android.widget.TextView;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.lihao.semicareer.R;
 import com.lihao.semicareer.adapter.RecommendJobAdapter;
+import com.lihao.semicareer.application.CoreApplication;
 import com.lihao.semicareer.entity.CareerJob;
 import com.lihao.semicareer.model.JobModel;
+import com.lihao.semicareer.model.ResumeModel;
+import com.maning.mndialoglibrary.MProgressDialog;
+import com.maning.mndialoglibrary.MStatusDialog;
 import com.oridway.oridcore.network.ResponseObject;
 import com.oridway.oridcore.tools.GlideApp;
 import com.oridway.oridcore.utils.Constant;
 import com.oridway.oridcore.utils.LogUtil;
+import com.oridway.oridcore.utils.ToastUtil;
 
 import java.util.HashMap;
 import java.util.List;
@@ -37,7 +42,7 @@ public class JobDetailActivity extends SwipeBackBaseActivity {
 
     public static final String FAVORATE_CHOOSE = "{ion-android-favorite}";
     public static final String FAVORATE_UNCHOOSE = "{ion-android-favorite-outline}";
-    public static final String JOB_LOCATION = "{{md-place}}";
+    public static final String JOB_LOCATION = "{md-place}";
     public static final String JOB_EDUCATION = "{md-card-travel}";
     public static final String JOB_EXPERENCE = "{md-restore}";
 
@@ -77,11 +82,15 @@ public class JobDetailActivity extends SwipeBackBaseActivity {
     Button sendResume;
 
     private JobModel jobModel;
+    private ResumeModel resumeModel;
     private int jobID;
     private LinearLayoutManager layoutManager;
     private List<CareerJob> recommendList;
     private CareerJob jobDetailEntity;
     private RecommendJobAdapter recommendAdapter;
+
+    private MStatusDialog mStatusDialog;
+    private MProgressDialog mProgressDialog;
 
 
     public static void startActivity(Context context, int jobID) {
@@ -98,6 +107,7 @@ public class JobDetailActivity extends SwipeBackBaseActivity {
     @Override
     protected void initActivity() {
         jobModel = new JobModel();
+        resumeModel = new ResumeModel();
         jobID = getIntent().getIntExtra("jobID", 100001);
         initView();
         initClickListener();
@@ -227,14 +237,112 @@ public class JobDetailActivity extends SwipeBackBaseActivity {
                 finish();
                 break;
             case R.id.itv_toolbar_right:
-                rightIcon.setText(FAVORATE_CHOOSE);
+                collectJob();
                 break;
             case R.id.itv_job_gocompany:
-
+                CompanyDetailActivity.startActivity(this, jobDetailEntity.companyID);
                 break;
             case R.id.bt_send_resume:
-
+                sendResume();
                 break;
         }
+    }
+
+    private void collectJob() {
+        if (CoreApplication.loginStatus) {
+            showProgressDialog();
+            resumeModel.collectJob(CoreApplication.appLoginMessage.userID, jobID)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<ResponseObject<String>>() {
+                        @Override
+                        public void onCompleted() {
+                            mProgressDialog.dismiss();
+                            rightIcon.setText(FAVORATE_CHOOSE);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            showSendFailDialog("收藏失败");
+                            mProgressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onNext(ResponseObject<String> stringResponseObject) {
+                            switch (stringResponseObject.status) {
+                                case 0:
+                                    showSendFailDialog("已收藏过该职位");
+                                    break;
+                                case 4:
+                                    showSendFailDialog("已收藏过该职位");
+                                    break;
+                                case 1:
+                                    showSendSuccessDialog("收藏成功");
+                                    break;
+                            }
+                        }
+                    });
+        } else {
+            showNotLoginDialog();
+        }
+    }
+
+    private void sendResume() {
+        if (CoreApplication.loginStatus) {
+            showProgressDialog();
+            resumeModel.sendResume(CoreApplication.appLoginMessage.userID, jobID)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<ResponseObject<String>>() {
+                        @Override
+                        public void onCompleted() {
+                            mProgressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            showSendFailDialog("投递失败");
+                            mProgressDialog.dismiss();
+                        }
+
+                        @Override
+                        public void onNext(ResponseObject<String> stringResponseObject) {
+                            switch (stringResponseObject.status) {
+                                case 0:
+                                    showSendFailDialog("已投递过简历");
+                                    break;
+                                case 4:
+                                    showSendFailDialog("已投递过简历");
+                                    break;
+                                case 1:
+                                    showSendSuccessDialog("投递成功");
+                                    break;
+                            }
+                        }
+                    });
+        } else {
+            showNotLoginDialog();
+        }
+
+    }
+
+    private void showSendSuccessDialog(String msg) {
+        mStatusDialog = new MStatusDialog(this);
+        mStatusDialog.showSuccess(msg);
+    }
+
+    private void showProgressDialog() {
+        mProgressDialog = new MProgressDialog(this);
+        mProgressDialog.show("投递中");
+    }
+
+    private void showNotLoginDialog() {
+        mStatusDialog = new MStatusDialog(this);
+        mStatusDialog.showError("您尚未登录");
+    }
+
+    private void showSendFailDialog(String msg) {
+        mStatusDialog = new MStatusDialog(this);
+        mStatusDialog.showError(msg);
     }
 }

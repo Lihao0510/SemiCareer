@@ -16,7 +16,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <ScrollView
             android:id="@+id/sv_resume_container"
@@ -25,12 +26,79 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="3dp">
+
+                    <include layout="@layout/item_resume_basic" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="3dp">
+
+                    <include layout="@layout/item_resume_desc" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="3dp">
+
+                    <include layout="@layout/item_resume_edu" />
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="12dp"
+                    app:cardElevation="3dp">
+
+                    <include layout="@layout/item_resume_intent" />
+
+                </android.support.v7.widget.CardView>
 
             </LinearLayout>
 
         </ScrollView>
 
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_resume_save"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_conner_primary"
+            android:text="保存简历"
+            android:textColor="@color/pureWhite" />
+
+
+    </LinearLayout>
 
 </LinearLayout>

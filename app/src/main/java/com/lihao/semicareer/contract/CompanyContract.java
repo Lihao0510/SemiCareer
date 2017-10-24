@@ -11,6 +11,8 @@ public interface CompanyContract {
 
     interface CompanyView {
         Context getActivityContext();
+
+        void setCanLoadMore(boolean canLoadMore);
     }
 
     interface CompanyPresenter {

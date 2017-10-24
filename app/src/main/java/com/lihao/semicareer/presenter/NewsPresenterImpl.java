@@ -53,7 +53,7 @@ public class NewsPresenterImpl implements NewsContract.NewsPresenter {
     @Override
     public void buildList(RecyclerView recyclerView) {
         getData();
-        newsAdapter = new NewsAdapter(newsList);
+        newsAdapter = new NewsAdapter(newsList, mView.getActivityContext());
         recyclerView.setAdapter(newsAdapter);
         recyclerView.setLayoutManager(layoutManager);
         OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_VERTICAL);

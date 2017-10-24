@@ -1,0 +1,95 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/itsWhite"
+    android:orientation="vertical"
+    tools:context="com.lihao.semicareer.activity.MyMessageActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:background="@color/colorPrimary" />
+
+    <include layout="@layout/group_toolbar_normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="请输入反馈标题"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/deepDark"
+            android:textSize="@dimen/font_middle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/pureWhite">
+
+            <EditText
+                android:id="@+id/et_reflect_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="20dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/deepDark" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:text="请输入反馈内容"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/deepDark"
+            android:textSize="@dimen/font_middle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/pureWhite">
+
+            <EditText
+                android:id="@+id/et_reflect_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="start"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:maxLines="6"
+                android:background="@null"
+                android:paddingLeft="20dp"
+                android:textColor="@color/deepDark" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_login_action"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_button_conner_primary"
+            android:text=""
+            android:textColor="@color/pureWhite" />
+
+    </LinearLayout>
+
+</LinearLayout>

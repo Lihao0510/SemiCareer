@@ -53,7 +53,7 @@ public class CompanyListActivity extends SwipeBackBaseActivity {
     private int companyTag;
 
     public static void startActivity(Context context, String searchLine, String copanyCity, int companyType, int companyTag) {
-        Intent intent = new Intent(context, JobDetailActivity.class);
+        Intent intent = new Intent(context, CompanyListActivity.class);
         intent.putExtra("searchLine", searchLine);
         intent.putExtra("copanyCity", copanyCity);
         intent.putExtra("companyType", companyType);

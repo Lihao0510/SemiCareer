@@ -15,4 +15,8 @@
     <style name="TransluteActivityTheme" parent="AppTheme">
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="MyToggleButton" parent="@android:style/Widget.CompoundButton">
+        <item name="android:button">@drawable/selector_toggle_button</item>
+    </style>
 </resources>

@@ -117,7 +117,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bt_login_action"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginEnd="32dp"
@@ -144,7 +144,7 @@
         android:textColor="@color/almostWhite"
         android:textSize="@dimen/font_h3"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_login_action" />
 
     <TextView
         android:id="@+id/tv_forget_password"
@@ -156,6 +156,6 @@
         android:textColor="@color/almostWhite"
         android:textSize="@dimen/font_h3"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/bt_login_action" />
 
 </android.support.constraint.ConstraintLayout>

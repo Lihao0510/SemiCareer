@@ -73,7 +73,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/TransluteActivityTheme" />
         <activity
-            android:name=".activity.PrivateActivity"
+            android:name=".activity.SendHistoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/TransluteActivityTheme" />
         <activity
@@ -84,8 +84,22 @@
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/TransluteActivityTheme" />
-        <activity android:name=".activity.CompanySearchActivity" />
-        <activity android:name=".activity.CollectActivity"></activity>
+        <activity
+            android:name=".activity.CompanySearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransluteActivityTheme" />
+        <activity
+            android:name=".activity.CollectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransluteActivityTheme" />
+        <activity
+            android:name=".activity.CompanyJobListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransluteActivityTheme" />
+        <activity
+            android:name=".activity.ReflectActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/TransluteActivityTheme" />
     </application>
 
 </manifest>

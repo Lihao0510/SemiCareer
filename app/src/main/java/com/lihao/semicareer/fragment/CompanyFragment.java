@@ -15,6 +15,7 @@ import com.lihao.semicareer.activity.JobDetailActivity;
 import com.lihao.semicareer.contract.CompanyContract;
 import com.lihao.semicareer.presenter.CompanyPresenterImpl;
 import com.oridway.oridcore.eventmessage.ListEvent;
+import com.oridway.oridcore.utils.ListUtil;
 import com.oridway.oridcore.utils.LogUtil;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,6 +37,8 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
     @BindView(R.id.itv_company_search)
     IconTextView companySearch;
 
+    private boolean canLoadMore = true;
+
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_company, container, false);
@@ -55,6 +58,21 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
 
     private void initClickListener() {
         companySearch.setOnClickListener(this);
+        companyListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                LogUtil.debugLog("是否滑动到底部:" + ListUtil.isSlideToBottom(recyclerView) + ";  canloadMore:" + canLoadMore);
+                if (ListUtil.isSlideToBottom(recyclerView) && canLoadMore) {
+                    mPresenter.loadMoreData();
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     @Override
@@ -65,6 +83,12 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
                 break;
         }
     }
+
+    @Override
+    public void setCanLoadMore(boolean canLoadMore) {
+        this.canLoadMore = canLoadMore;
+    }
+
 
     @Override
     public Context getActivityContext() {
@@ -83,5 +107,11 @@ public class CompanyFragment extends BaseFragment implements CompanyContract.Com
     public void onDestroyView() {
         super.onDestroyView();
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setCanLoadMore(true);
     }
 }

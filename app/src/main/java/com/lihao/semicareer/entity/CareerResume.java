@@ -22,7 +22,16 @@ public class CareerResume {
     public String userBirth;
     public String userAttach;
     public int userSex;
+    public int careerStatus;
     public SysUser userMessage;
+
+    public int getCareerStatus() {
+        return careerStatus;
+    }
+
+    public void setCareerStatus(int careerStatus) {
+        this.careerStatus = careerStatus;
+    }
 
     @Override
     public String toString() {
