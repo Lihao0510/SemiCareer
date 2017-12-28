@@ -48,9 +48,10 @@ public class RetrofitManager {
         builder.writeTimeout(20, TimeUnit.SECONDS);
         builder.retryOnConnectionFailure(true);
         OkHttpClient client = builder.build();
+        String baseUrl = ConfigUtil.getDefaultMap().get("BaseHttpUrl") + ConfigUtil.getDefaultMap().get("BaseRoute");
 
         mRetrofit = new Retrofit.Builder()
-                .baseUrl(ConfigUtil.getDefaultMap().get("BaseHttpUrl"))
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(client)

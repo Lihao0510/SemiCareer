@@ -17,7 +17,7 @@ import rx.Observable;
 
 public interface LoginApi {
 
-    @POST("/semi/launch/careerlogin")
+    @POST("/launch/careerlogin")
     @FormUrlEncoded
     Observable<ResponseObject<LoginMessage>> loginByPhone(@FieldMap Map<String, Object> params);
 

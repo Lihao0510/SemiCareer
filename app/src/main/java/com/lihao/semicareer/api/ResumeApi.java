@@ -20,17 +20,17 @@ import rx.Observable;
 
 public interface ResumeApi {
 
-    @POST("/semi/resume/send")
+    @POST("/resume/send")
     @FormUrlEncoded
     Observable<ResponseObject<String>> sendResume(@Field("userID") int userID, @Field("jobID") int jobID);
 
-    @POST("/semi/resume/collect")
+    @POST("/resume/collect")
     @FormUrlEncoded
     Observable<ResponseObject<String>> collectJob(@Field("userID") int userID, @Field("jobID") int jobID);
 
-    @GET("/semi/resume/getcollect")
+    @GET("/resume/getcollect")
     Observable<ResponseObject<List<CareerJob>>> getCollectJobByUserID(@Query("userID") int userID);
 
-    @GET("/semi/resume/sendhistory")
+    @GET("/resume/sendhistory")
     Observable<ResponseObject<List<CareerJob>>> getSendHistory(@Query("userID") int userID);
 }

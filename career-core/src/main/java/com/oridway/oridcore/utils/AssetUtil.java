@@ -28,6 +28,7 @@ public class AssetUtil {
             propertyMap.put("BaseHttpUrl", properties.getProperty("BaseHttpUrl", "127.0.0.1:8080"));
             propertyMap.put("VersionCode", properties.getProperty("VersionCode", "1000"));
             propertyMap.put("IsRelease", properties.getProperty("IsRelease", "true"));
+            propertyMap.put("BaseRoute", properties.getProperty("BaseRoute", "/"));
 
             in.close();
             properties = null;

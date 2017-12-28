@@ -20,21 +20,21 @@ import rx.Observable;
 
 public interface MessageApi {
 
-    @POST("/semi/message/query")
+    @POST("/message/query")
     @FormUrlEncoded
     Observable<ResponseObject<List<CareerMessage>>> queryMessageListByCondition(@FieldMap Map<String, Object> params);
 
-    @GET("/semi/message/detail")
+    @GET("/message/detail")
     Observable<ResponseObject<CareerMessage>> getMessageDetailByID(@Query("messageID") int messageID);
 
-    @POST("/semi/message/write")
+    @POST("/message/write")
     @FormUrlEncoded
     Observable<ResponseObject<String>> writeMessage(@FieldMap Map<String, Object> params);
 
-    @POST("/semi/message/changestatus")
+    @POST("/message/changestatus")
     @FormUrlEncoded
     Observable<ResponseObject<String>> changeMessageStatus(@Field("messageID") int messageID, @Field("messageTag") int messageTag);
 
-    @GET("/semi/message/delete")
+    @GET("/message/delete")
     Observable<ResponseObject<String>> deleteMessageByID(@Query("messageID") int messageID);
 }

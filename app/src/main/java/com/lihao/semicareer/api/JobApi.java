@@ -26,7 +26,7 @@ public interface JobApi {
      * @param pageSize the page size
      * @return the observable
      */
-    @GET("/semi/career/queryjoblist")
+    @GET("/career/queryjoblist")
     Observable<ResponseObject<List<CareerJob>>> queryJobList(@Query("pageNum") int pageNum, @Query("pageSize") int pageSize);
 
     /**
@@ -35,7 +35,7 @@ public interface JobApi {
      * @param jobID the job id
      * @return the job detail by id
      */
-    @GET("/semi/career/getjobdetail")
+    @GET("/career/getjobdetail")
     Observable<ResponseObject<CareerJob>> getJobDetailByID(@Query("jobID") int jobID);
 
     /**
@@ -44,7 +44,7 @@ public interface JobApi {
      * @param companyID the company id
      * @return the job list by company id
      */
-    @GET("/semi/career/querybycompany")
+    @GET("/career/querybycompany")
     Observable<ResponseObject<List<CareerJob>>> queryJobByCompanyID(@Query("companyID") int companyID);
 
     /**
@@ -59,7 +59,7 @@ public interface JobApi {
      *               companyTag: (可选)公司行业
      * @return the observable
      */
-    @POST("/semi/career/querycompany")
+    @POST("/career/querycompany")
     @FormUrlEncoded
     Observable<ResponseObject<List<CareerCompany>>> queryCompanyList(@FieldMap Map<String, Object> params);
 
@@ -69,7 +69,7 @@ public interface JobApi {
      * @param companyID the company id
      * @return the company detail by id
      */
-    @GET("/semi/career/getcompanydetail")
+    @GET("/career/getcompanydetail")
     Observable<ResponseObject<CareerCompany>> getCompanyDetailByID(@Query("companyID") int companyID);
 
     /**
@@ -82,7 +82,7 @@ public interface JobApi {
      *               searchLine: (可选)查询字符串
      * @return the observable
      */
-    @POST("/semi/career/searchjoblist")
+    @POST("/career/searchjoblist")
     @FormUrlEncoded
     Observable<ResponseObject<List<CareerJob>>> searchJobList(@FieldMap Map<String, Object> params);
 
@@ -94,7 +94,7 @@ public interface JobApi {
     * cityCode: (可选)城市编码
     * jobType: (可选)查询字符串
     * */
-    @POST("/semi/career/getrecommand")
+    @POST("/career/getrecommand")
     @FormUrlEncoded
     Observable<ResponseObject<List<CareerJob>>> recommandJobList(@FieldMap Map<String, Object> params);
 
